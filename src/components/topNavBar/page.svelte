@@ -58,8 +58,8 @@
   </div>
   <div class="navbar-center text-center">
     <a href="/home" class="btn btn-ghost normal-case text-2xl">
-      <span style="color:#ffffff">UFONE&nbsp;</span><span style="color:#99B83B"
-        >ISLAMIC</span
+      <span style="color:#ffffff">UFONE&nbsp;</span><span
+        style="color:#99B83B; -webkit-text-stroke: 0.5px #66FF00;">ISLAMIC</span
       >
     </a>
   </div>
