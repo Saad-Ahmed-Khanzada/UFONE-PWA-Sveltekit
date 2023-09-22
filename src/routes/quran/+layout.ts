@@ -25,18 +25,36 @@ export const load = async ({ fetch }: { fetch: any }) => {
     const response = await fetch(url);
     const data = await response.json();
     const ayats = data.data;
-    // console.log(ayats);
+
+    //  console.log(ayats);
 
     // Group ayats by ayat number
-    const outArray = [];
+    const outArray:any = [];
     for (let i = ayat; i <= limit; i++) {
+      if (ayats[i]['lang'] == 'UR')
+      {
+        // if (ayats[i]['qtext'].match("\\r\\n"))
+        // {
+
+        //   console.log(ayats[i]['qtext'])
+        // }
+        ayats[i]['qtext'] = ayats[i]['qtext'].replace("\\r\\n", "-")
+        // ayats[i]['qtext'] = ayats[i]['qtext'].split("\\r\\n")[1]
+      }
       const groupedAyat = ayats.filter((j: any) => j.ayat == i);
-      outArray.push(groupedAyat);
+   
+      outArray.push(groupedAyat)
+   
+
     }
 
+
     fullSurah.set(outArray);
-    // console.log(outArray);
+
+
     return outArray;
+      
+  
   }
   return {
     ayats: fetchData(),

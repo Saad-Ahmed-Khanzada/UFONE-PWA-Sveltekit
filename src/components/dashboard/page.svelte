@@ -13,6 +13,22 @@
 
   let nextPrayer: any = {};
   let showNextTime: any = false;
+  let value = parseInt(localStorage.getItem("hijri_date_hd") || "0");
+
+  function increment() {
+    value++;
+    saveValue();
+  }
+
+  function decrement() {
+    value--;
+    saveValue();
+  }
+
+  function saveValue() {
+    // Save the updated value to localStorage
+    localStorage.setItem("hijri_date_hd", value.toString());
+  }
 
   function toHoursAndMinutes(totalSeconds: any) {
     totalSeconds = parseFloat(totalSeconds);
@@ -79,7 +95,17 @@
         </div>
         <div class="stat-title text-white">
           <span>
-            ({$currentCityDailyPrayerTime.hijri_date.hd}
+            <button
+              class=" btn-sm btn-circle text-xl font-bold"
+              style="background-color:#99B83B;"
+              on:click={decrement}>-</button
+            >
+            <span>{$currentCityDailyPrayerTime.hijri_date.hd + value}</span>
+            <button
+              class=" btn-sm btn-circle text-xl font-bold"
+              style="background-color:#99B83B;"
+              on:click={increment}>+</button
+            >
           </span>
           {HIJRI_MONTHS_LIST[+$currentCityDailyPrayerTime.hijri_date.hm - 1]}
           {$currentCityDailyPrayerTime.hijri_date.hy})

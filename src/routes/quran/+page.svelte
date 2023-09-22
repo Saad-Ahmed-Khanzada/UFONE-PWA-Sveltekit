@@ -12,11 +12,12 @@
 <!-- <MenuBar /> -->
 
 <!-- <div class="container justify-items-center mx-10 my-2"> -->
+
 <ul>
   {#each $fullSurah as ayatGroup}
     {#if ayatGroup[0]?.ayat == 1 && ayatGroup[0]?.surah !== 9}
       <li class="mt-3">
-        <div style="background: rgba(243, 128, 32, 1)">
+        <div style="background: #d9e6b1;">
           <div class="card-body text-start">
             {#if ayatGroup[0].lang == "AR"}
               <h2 class="text-4xl p-2 leading-loose font-quran" dir="rtl">
@@ -26,7 +27,7 @@
 
             {#if $isUrdu}
               {#if ayatGroup[1].lang == "UR"}
-                <p class="text-1xl leading-loose font-urdu" dir="rtl">
+                <p class="text-xl leading-loose font-urdu" dir="rtl">
                   شُروع اَللہ کے پاک نام سے جو بڑا مہر بان نہايت رحم والا ہے
                 </p>
               {/if}
@@ -43,7 +44,11 @@
     <li class="mt-3">
       <!-- <AyatCard data={ayat} /> -->
 
-      <div class="" style="background: rgba(158, 186, 132, 1)">
+      <div
+        class="bg-pink-100 gradient-light-to-pink"
+        style="background: rgba(255, 153, 67, 1);
+        "
+      >
         <div class="card-body text-start">
           {#each ayatGroup as ayat}
             {#if ayat.lang == "AR"}
@@ -54,7 +59,7 @@
 
             {#if $isUrdu}
               {#if ayat.lang == "UR"}
-                <p class="text-1xl leading-loose font-urdu" dir="rtl">
+                <p class="text-xl leading-loose font-urdu" dir="rtl">
                   {ayat?.qtext}
                 </p>
               {/if}
