@@ -5,7 +5,7 @@
     unsubscribeUser,
   } from "../../helpers/subscriptionHelpers";
   import { subStatus } from "../../stores/store";
-
+  import { currentCityDailyPrayerTime } from "../../stores/prayerTime";
   import { isHanafi, msisdn, isUrdu, isMale } from "../../stores/store";
 
   const toggleCalcMethod = (e: any) => {
@@ -29,9 +29,21 @@
     goto("/home");
   };
 
-  // function toggleDarkMode() {
-  //   $isDark = !$isDark;
-  // }
+  let value = parseInt(localStorage.getItem("hijri_date_hd") || "0");
+  function increment() {
+    value++;
+    saveValue();
+  }
+
+  function decrement() {
+    value--;
+    saveValue();
+  }
+
+  function saveValue() {
+    // Save the updated value to localStorage
+    localStorage.setItem("hijri_date_hd", value.toString());
+  }
 </script>
 
 <div class="navbar rounded-b-xl" style="background: rgba(243, 128, 32, 1)">
@@ -170,20 +182,42 @@
               </label></button
             >
           </li>
-          {#if $subStatus == "true"}
-            <li>
-              <button
-                class="btn btn-ghost text-primary"
-                on:click={() => (openUnsubscribeModal = true)}
-              >
-                {#if $isUrdu}
-                  <h1 class="font-urdu text-xl">ان سبسکرائب</h1>
-                {:else}
-                  <span>Unsubscribe</span>
-                {/if}</button
-              >
-            </li>
-          {/if}
+          <div class="text-right">
+            <button
+              class="btn btn-outline btn-error text-left"
+              on:click={() => {
+                window.location.reload();
+              }}
+            >
+              Confirm
+            </button>
+
+            <button
+              class=" btn-sm btn-circle text-xl font-bold"
+              style="background-color:#99B83B;"
+              on:click={decrement}>-</button
+            >
+            <span>{$currentCityDailyPrayerTime.hijri_date.hd + value}</span>
+            <button
+              class=" btn-sm btn-circle text-xl font-bold"
+              style="background-color:#99B83B;"
+              on:click={increment}>+</button
+            >
+            {#if $subStatus == "true"}
+              <li>
+                <button
+                  class="btn btn-ghost text-primary"
+                  on:click={() => (openUnsubscribeModal = true)}
+                >
+                  {#if $isUrdu}
+                    <h1 class="font-urdu text-xl">ان سبسکرائب</h1>
+                  {:else}
+                    <span>Unsubscribe</span>
+                  {/if}</button
+                >
+              </li>
+            {/if}
+          </div>
         </ul>
       </button>
     </div>

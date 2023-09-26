@@ -10,29 +10,41 @@
   let hours: any;
   let minutes: any;
   let seconds: any;
-
+  console.log("----------------", localStorage.getItem);
   let nextPrayer: any = {};
   let showNextTime: any = false;
-  let value = parseInt(localStorage.getItem("hijri_date_hd") || "0");
 
-  function increment() {
-    value++;
-    saveValue();
-  }
+  // let value = parseInt(localStorage.getItem("hijri_date_hd") || "0");
+  // console.log("----------------", value);
+  // function increment() {
+  //   value++;
+  //   saveValue();
+  // }
 
-  function decrement() {
-    value--;
-    saveValue();
-  }
+  // function decrement() {
+  //   value--;
+  //   saveValue();
+  // }
 
-  function saveValue() {
-    // Save the updated value to localStorage
-    localStorage.setItem("hijri_date_hd", value.toString());
-  }
+  // function saveValue() {
+  //   // Save the updated value to localStorage
+  //   localStorage.setItem("hijri_date_hd", value.toString());
+  // }
+
+  let value = 0;
+  const storedValue: any = localStorage.getItem("hijri_date_hd");
+  console.log(
+    "-----------------",
+    typeof $currentCityDailyPrayerTime.hijri_date.hd
+  );
+  console.log("-----------------", typeof storedValue);
+  const parsedValue: Number = parseInt(storedValue);
+  value = $currentCityDailyPrayerTime.hijri_date.hd + parsedValue;
 
   function toHoursAndMinutes(totalSeconds: any) {
     totalSeconds = parseFloat(totalSeconds);
     const totalMinutes = Math.floor(totalSeconds / 60);
+    // console.log("----------------", localStorage.getItem);
 
     const seconds = totalSeconds % 60;
     const hours = Math.floor(totalMinutes / 60);
@@ -95,20 +107,10 @@
         </div>
         <div class="stat-title text-white">
           <span>
-            <button
-              class=" btn-sm btn-circle text-xl font-bold"
-              style="background-color:#99B83B;"
-              on:click={decrement}>-</button
-            >
-            <span>{$currentCityDailyPrayerTime.hijri_date.hd + value}</span>
-            <button
-              class=" btn-sm btn-circle text-xl font-bold"
-              style="background-color:#99B83B;"
-              on:click={increment}>+</button
-            >
+            <span>{value}</span>
           </span>
           {HIJRI_MONTHS_LIST[+$currentCityDailyPrayerTime.hijri_date.hm - 1]}
-          {$currentCityDailyPrayerTime.hijri_date.hy})
+          {$currentCityDailyPrayerTime.hijri_date.hy}
         </div>
       </div>
     {:else}
@@ -130,10 +132,10 @@
         </div>
         <div class="stat-title text-white">
           <span>
-            ({$currentCityDailyPrayerTime.hijri_date.hd}
+            <span>{value}</span>
           </span>
           {HIJRI_MONTHS_LIST[+$currentCityDailyPrayerTime.hijri_date.hm - 1]}
-          {$currentCityDailyPrayerTime.hijri_date.hy})
+          {$currentCityDailyPrayerTime.hijri_date.hy}
         </div>
       </div>
     {/if}
