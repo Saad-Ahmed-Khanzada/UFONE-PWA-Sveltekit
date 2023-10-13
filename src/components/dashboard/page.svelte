@@ -10,41 +10,48 @@
   let hours: any;
   let minutes: any;
   let seconds: any;
-  console.log("----------------", localStorage.getItem);
+
   let nextPrayer: any = {};
   let showNextTime: any = false;
 
-  // let value = parseInt(localStorage.getItem("hijri_date_hd") || "0");
-  // console.log("----------------", value);
-  // function increment() {
-  //   value++;
-  //   saveValue();
-  // }
-
-  // function decrement() {
-  //   value--;
-  //   saveValue();
-  // }
-
-  // function saveValue() {
-  //   // Save the updated value to localStorage
-  //   localStorage.setItem("hijri_date_hd", value.toString());
-  // }
-
-  let value = 0;
-  const storedValue: any = localStorage.getItem("hijri_date_hd");
+  console.log("currentCityDailyPrayerTime", $currentCityDailyPrayerTime);
   console.log(
-    "-----------------",
+    "currentCityDailyPrayerTime.hijri_date.hd",
     typeof $currentCityDailyPrayerTime.hijri_date.hd
   );
-  console.log("-----------------", typeof storedValue);
-  const parsedValue: Number = parseInt(storedValue);
-  value = $currentCityDailyPrayerTime.hijri_date.hd + parsedValue;
+  let offsetValue = localStorage.getItem("setValue");
 
+  let storedValue: Number;
+  // if (Number(offsetValue) === 0) {
+  // storedValue = $currentCityDailyPrayerTime.hijri_date.hd;
+  // } else {
+  console.log("======offsetValue", offsetValue);
+  storedValue = $currentCityDailyPrayerTime.hijri_date.hd + Number(offsetValue);
+  // }
+
+  console.log("offsetValue:", offsetValue);
+  console.log("storedValue:", storedValue);
+  // console.log("-----------------storedValue", offsetValue);
+  // let dateToShow =
+  //   Number($currentCityDailyPrayerTime.hijri_date.hd) + Number(offsetValue);
+
+  // function saveValue() {
+  //   localStorage.setItem("DTS", dateToShow.toString());
+  // }
+  // value = Number($currentCityDailyPrayerTime.hijri_date.hd) + storedValue;
+  // $currentCityDailyPrayerTime.hijri_date.hd = value;
+
+  // console.log(
+  //   "-----------------$currentCityDailyPrayerTime.hijri_date.hd",
+  //   typeof $currentCityDailyPrayerTime.hijri_date.hd
+  // );
+  // console.log("-----------------storedValue33333", typeof offsetValue);
+  // value = $currentCityDailyPrayerTime.hijri_date.hd + Number(storedValue);
+
+  // console.log("----------------", localStorage.getItem);
   function toHoursAndMinutes(totalSeconds: any) {
     totalSeconds = parseFloat(totalSeconds);
     const totalMinutes = Math.floor(totalSeconds / 60);
-    // console.log("----------------", localStorage.getItem);
 
     const seconds = totalSeconds % 60;
     const hours = Math.floor(totalMinutes / 60);
@@ -60,7 +67,7 @@
   export const timeTracker = setInterval(() => {
     currentDateTime = new Date();
     nextPrayer = getNextSalah(currentDateTime);
-
+    9;
     // console.log("----------nextPrayer", nextPrayer);
 
     if (nextPrayer != undefined) {
@@ -80,8 +87,8 @@
 
 <div class="flex justify-center px-5 pt-4 pb-50">
   <div
-    class=" stats w-screen bg-no-repeat bg-cover dark:text-red-600"
-    style="background: rgba(243, 128, 32, 1)"
+    class="bg-[url(https://i.ibb.co/2drgzVX/mosque-1.png)] stats w-screen bg-no-repeat bg-cover dark:text-red-600"
+    style="background:rgba(243, 128, 32, 1) ;"
   >
     {#if $isUrdu}
       <div class="stat" />
@@ -94,7 +101,7 @@
 
                 {nextPrayer.prayer}
                 <br />
-                {hours}h {minutes}
+                {hours}h {minutes}m
                 {seconds}s
               </span>
             </h3>
@@ -107,10 +114,17 @@
         </div>
         <div class="stat-title text-white">
           <span>
-            <span>{value}</span>
+            (
+            <!-- 5 here -->
+            <!-- <button
+              class=" btn-sm btn-circle text-xl font-bold"
+              style="background-color:#99B83B;"
+              on:click={decrement}>-</button
+            > -->
+            <span>{storedValue}</span>
           </span>
-          {HIJRI_MONTHS_LIST[+$currentCityDailyPrayerTime.hijri_date.hm - 1]}
-          {$currentCityDailyPrayerTime.hijri_date.hy}
+          {HIJRI_MONTHS_LIST[$currentCityDailyPrayerTime.hijri_date.hm - 1]}
+          {$currentCityDailyPrayerTime.hijri_date.hy})
         </div>
       </div>
     {:else}
@@ -118,8 +132,8 @@
         {#if showNextTime}
           <div>
             <h3>
-              <span class="text-xl font-semibold text-white">
-                Next Namaz : <br />{nextPrayer.prayer} in
+              <span class="text-xl font-semibold text-white font-roboto">
+                Next Namaz : <br />{nextPrayer.prayer}
                 <br />
                 {hours}h {minutes}m {seconds}s
               </span>
@@ -130,12 +144,15 @@
         <div class="stat-title text-white">
           {$currentCityDailyPrayerTime.date_str}
         </div>
-        <div class="stat-title text-white">
+        <div class="stat-title text-white font-roboto">
           <span>
-            <span>{value}</span>
+            (
+
+            <span>{storedValue}</span>
+            {HIJRI_MONTHS_LIST[+$currentCityDailyPrayerTime.hijri_date.hm - 1]}
+            {$currentCityDailyPrayerTime.hijri_date.hy}
+            )
           </span>
-          {HIJRI_MONTHS_LIST[+$currentCityDailyPrayerTime.hijri_date.hm - 1]}
-          {$currentCityDailyPrayerTime.hijri_date.hy}
         </div>
       </div>
     {/if}

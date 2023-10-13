@@ -28,21 +28,23 @@
     invalidateAll();
     goto("/home");
   };
-
-  let value = parseInt(localStorage.getItem("hijri_date_hd") || "0");
+  let value: any = Number(localStorage.getItem("setValue"));
   function increment() {
-    value++;
+    if (value < 2) {
+      value++;
+    }
     saveValue();
   }
 
   function decrement() {
-    value--;
+    if (value > -2) {
+      value--;
+    }
     saveValue();
   }
 
   function saveValue() {
-    // Save the updated value to localStorage
-    localStorage.setItem("hijri_date_hd", value.toString());
+    localStorage.setItem("setValue", value.toString());
   }
 </script>
 
@@ -182,27 +184,36 @@
               </label></button
             >
           </li>
-          <div class="text-right">
-            <button
-              class="btn btn-outline btn-error text-left"
-              on:click={() => {
-                window.location.reload();
-              }}
-            >
-              Confirm
-            </button>
+          <div class="text-center">
+            <div class="pr-3">
+              {#if $isUrdu}
+                <h1 class="font-urdu text-2xl">تاریخ درست کریں</h1>
+              {:else}
+                <h1 class=" text-xl">Fix your offset</h1>
+              {/if}
 
-            <button
-              class=" btn-sm btn-circle text-xl font-bold"
-              style="background-color:#99B83B;"
-              on:click={decrement}>-</button
-            >
-            <span>{$currentCityDailyPrayerTime.hijri_date.hd + value}</span>
-            <button
-              class=" btn-sm btn-circle text-xl font-bold"
-              style="background-color:#99B83B;"
-              on:click={increment}>+</button
-            >
+              <button
+                class=" btn-sm btn-circle text-xl font-bold"
+                style="background-color:rgba(243, 128, 32, 1);"
+                on:click={decrement}>-</button
+              >
+              <span>{value}</span>
+              <button
+                class=" btn-sm btn-circle text-xl font-bold"
+                style="background-color:rgba(243, 128, 32, 1);"
+                on:click={increment}>+</button
+              >
+              <br />
+
+              <button
+                class="btn btn-primary text-center font-bold font-roboto rounded-full btn-sm"
+                on:click={() => {
+                  window.location.reload();
+                }}
+              >
+                SET
+              </button>
+            </div>
             {#if $subStatus == "true"}
               <li>
                 <button
