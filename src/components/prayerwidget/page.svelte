@@ -165,7 +165,7 @@
     </div>
   </div>
 {:else}
-  <div class="grid grid-cols-5 divide-x px-5">
+  <div class="grid grid-cols-5 divide-x px-5 font-roboto">
     <!--Fajr timing-->
     <div
       class="grid grid-rows-2 rounded-l-2xl h-28"

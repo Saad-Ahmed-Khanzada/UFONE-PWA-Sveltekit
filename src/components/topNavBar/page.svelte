@@ -7,6 +7,8 @@
   import { subStatus } from "../../stores/store";
   import { currentCityDailyPrayerTime } from "../../stores/prayerTime";
   import { isHanafi, msisdn, isUrdu, isMale } from "../../stores/store";
+  import { hijriDateOffset, adjustedHijriDate } from "../../stores/hijriDate";
+  import { get } from "svelte/store";
 
   const toggleCalcMethod = (e: any) => {
     invalidateAll();
@@ -28,23 +30,24 @@
     invalidateAll();
     goto("/home");
   };
-  let value: any = Number(localStorage.getItem("setValue"));
+
+  let value: any = Number(get(hijriDateOffset));
   function increment() {
     if (value < 2) {
       value++;
     }
-    saveValue();
   }
 
   function decrement() {
     if (value > -2) {
       value--;
     }
-    saveValue();
   }
 
-  function saveValue() {
-    localStorage.setItem("setValue", value.toString());
+  function updateHijriDateValue() {
+    hijriDateOffset.set(value);
+    $adjustedHijriDate =
+      $currentCityDailyPrayerTime.hijri_date.hd + Number($hijriDateOffset);
   }
 </script>
 
@@ -207,9 +210,7 @@
 
               <button
                 class="btn btn-primary text-center font-bold font-roboto rounded-full btn-sm"
-                on:click={() => {
-                  window.location.reload();
-                }}
+                on:click={updateHijriDateValue}
               >
                 SET
               </button>

@@ -4,6 +4,7 @@
   // import { currentCity } from "../../stores/store";
   import { isUrdu } from "../../stores/store";
   import { getNextSalah } from "../../helpers/prayerDataFetchers";
+  import { adjustedHijriDate } from "../../stores/hijriDate";
 
   let currentDateTime = new Date();
 
@@ -14,23 +15,23 @@
   let nextPrayer: any = {};
   let showNextTime: any = false;
 
-  console.log("currentCityDailyPrayerTime", $currentCityDailyPrayerTime);
-  console.log(
-    "currentCityDailyPrayerTime.hijri_date.hd",
-    typeof $currentCityDailyPrayerTime.hijri_date.hd
-  );
-  let offsetValue = localStorage.getItem("setValue");
+  // console.log("currentCityDailyPrayerTime", $currentCityDailyPrayerTime);
+  // console.log(
+  //   "currentCityDailyPrayerTime.hijri_date.hd",
+  //   typeof $currentCityDailyPrayerTime.hijri_date.hd
+  // );
+  // let offsetValue = localStorage.getItem("setValue");
 
-  let storedValue: Number;
+  // let storedValue: Number;
   // if (Number(offsetValue) === 0) {
   // storedValue = $currentCityDailyPrayerTime.hijri_date.hd;
   // } else {
-  console.log("======offsetValue", offsetValue);
-  storedValue = $currentCityDailyPrayerTime.hijri_date.hd + Number(offsetValue);
+  // console.log("======offsetValue", offsetValue);
+  // storedValue = $currentCityDailyPrayerTime.hijri_date.hd + Number(offsetValue);
   // }
 
-  console.log("offsetValue:", offsetValue);
-  console.log("storedValue:", storedValue);
+  // console.log("offsetValue:", offsetValue);
+  // console.log("storedValue:", storedValue);
   // console.log("-----------------storedValue", offsetValue);
   // let dateToShow =
   //   Number($currentCityDailyPrayerTime.hijri_date.hd) + Number(offsetValue);
@@ -121,7 +122,7 @@
               style="background-color:#99B83B;"
               on:click={decrement}>-</button
             > -->
-            <span>{storedValue}</span>
+            <span>{$adjustedHijriDate}</span>
           </span>
           {HIJRI_MONTHS_LIST[$currentCityDailyPrayerTime.hijri_date.hm - 1]}
           {$currentCityDailyPrayerTime.hijri_date.hy})
@@ -148,7 +149,7 @@
           <span>
             (
 
-            <span>{storedValue}</span>
+            <span>{$adjustedHijriDate}</span>
             {HIJRI_MONTHS_LIST[+$currentCityDailyPrayerTime.hijri_date.hm - 1]}
             {$currentCityDailyPrayerTime.hijri_date.hy}
             )

@@ -38,7 +38,7 @@
           <p dir="rtl">آج کی {contentProp.contentNameUrdu}</p>
         </h2>
       {:else}
-        <h2 class="text-3xl font-bold text-left">
+        <h2 class="text-3xl font-bold text-left font-roboto">
           <p>{contentProp.contentNameEnglish} Of The Day:</p>
         </h2>
       {/if}
@@ -50,7 +50,7 @@
             {contentProp.Urdu}
           </p>
         {:else}
-          <p class=" text-left" dir="ltr">
+          <p class=" text-left font-roboto" dir="ltr">
             {contentProp.English}
           </p>{/if}
       </p>

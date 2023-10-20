@@ -11,7 +11,7 @@
     </h1>
   </div>
 {:else}
-  <div class="flex justify-start border-t-2 rounded-xl">
+  <div class="flex justify-start border-t-2 rounded-xl font-roboto">
     <!-- <h1 class="text-xl pl-5 pt-2 font-bold">
       <span> What would you like to do?</span>
     </h1> -->
