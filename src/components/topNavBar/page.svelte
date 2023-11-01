@@ -35,12 +35,18 @@
   function increment() {
     if (value < 2) {
       value++;
+      hijriDateOffset.set(value);
+      $adjustedHijriDate =
+        $currentCityDailyPrayerTime.hijri_date.hd + Number($hijriDateOffset);
     }
   }
 
   function decrement() {
     if (value > -2) {
       value--;
+      hijriDateOffset.set(value);
+      $adjustedHijriDate =
+        $currentCityDailyPrayerTime.hijri_date.hd + Number($hijriDateOffset);
     }
   }
 
@@ -51,7 +57,7 @@
   }
 </script>
 
-<div class="navbar rounded-b-xl" style="background: rgba(243, 128, 32, 1)">
+<div class="ucolor navbar rounded-b-xl">
   <div class="navbar-start">
     <button class="  btn-sm rounded text-white" on:click={() => goto("/home")}>
       <a href="/home">
@@ -188,32 +194,34 @@
             >
           </li>
           <div class="text-center">
-            <div class="pr-3">
+            <div
+              class="pr-3 flex flex-row flex-wrap items-center justify-between"
+            >
               {#if $isUrdu}
-                <h1 class="font-urdu text-2xl">تاریخ درست کریں</h1>
+                <h1 class="font-urdu text-lg font-semibold">تاریخ درست کریں</h1>
               {:else}
-                <h1 class=" text-xl">Fix your offset</h1>
+                <h1 class=" text-base font-semibold font-roboto">
+                  Hijri offset
+                </h1>
               {/if}
 
               <button
-                class=" btn-sm btn-circle text-xl font-bold"
-                style="background-color:rgba(243, 128, 32, 1);"
+                class="ucolor btn-xs btn-circle text-xl font-bold pb-8 text-center"
                 on:click={decrement}>-</button
               >
               <span>{value}</span>
               <button
-                class=" btn-sm btn-circle text-xl font-bold"
-                style="background-color:rgba(243, 128, 32, 1);"
+                class="ucolor btn-xs btn-circle text-xl font-bold pb-8 text-center"
                 on:click={increment}>+</button
               >
               <br />
 
-              <button
+              <!-- <button
                 class="btn btn-primary text-center font-bold font-roboto rounded-full btn-sm"
                 on:click={updateHijriDateValue}
               >
                 SET
-              </button>
+              </button> -->
             </div>
             {#if $subStatus == "true"}
               <li>
@@ -305,3 +313,9 @@
     </div>
   </div>
 </div>
+
+<style>
+  .ucolor {
+    background-color: rgba(243, 128, 32, 1);
+  }
+</style>

@@ -19,14 +19,14 @@
 </script>
 
 <h1
-  class="text-2xl pl-5 pt-1 font-bold"
+  class="text-xl pl-5 pt-1 font-bold"
   style="color:rgba(243, 128, 32, 1)
 "
 >
-  {$currentCity.name}&nbsp;&nbsp;&nbsp;
+  {$currentCity.name}
   <div class="dropdown">
     <button class="btn btn-ghost btn-circle text-primary border-secondary">
-      <i class="fa fa-map-marker text-2xl text-orange-500" aria-hidden="true" />
+      <i class="fa fa-map-marker text-xs text-orange-500" aria-hidden="true" />
     </button>
 
     <div

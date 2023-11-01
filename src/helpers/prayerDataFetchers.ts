@@ -7,6 +7,7 @@ import {
 } from "../stores/prayerTime";
 
 import { convertTime12to24 } from "./dateConvertor";
+import { adjustedHijriDate, hijriDateOffset } from "../stores/hijriDate";
 
 export const fetchCityPrayerTime = async (city: TCityData) => {
   // console.log("getting prayer timings");
@@ -25,6 +26,7 @@ export const fetchCityPrayerTime = async (city: TCityData) => {
   const data = await response.json();
 
   currentCityDailyPrayerTime.set(data);
+  adjustedHijriDate.set(data.hijri_date.hd + Number(get(hijriDateOffset)))
   return data;
 };
 

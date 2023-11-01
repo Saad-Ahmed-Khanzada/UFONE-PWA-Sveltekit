@@ -88,9 +88,9 @@
 
 <div class="flex justify-center px-5 pt-4 pb-50">
   <div
-    class="bg-[url(https://i.ibb.co/2drgzVX/mosque-1.png)] stats w-screen bg-no-repeat bg-cover dark:text-red-600"
-    style="background:rgba(243, 128, 32, 1) ;"
+    class="bg-[url(img/dashboard/dashboard-bg.png)] stats w-screen bg-no-repeat bg-cover dark:text-red-600"
   >
+    <!-- style="background:rgba(243, 128, 32, 1) ;" -->
     {#if $isUrdu}
       <div class="stat" />
       <div class="stat pl-10 text-right dark:text-red-600">
@@ -115,7 +115,6 @@
         </div>
         <div class="stat-title text-white">
           <span>
-            (
             <!-- 5 here -->
             <!-- <button
               class=" btn-sm btn-circle text-xl font-bold"
@@ -125,7 +124,7 @@
             <span>{$adjustedHijriDate}</span>
           </span>
           {HIJRI_MONTHS_LIST[$currentCityDailyPrayerTime.hijri_date.hm - 1]}
-          {$currentCityDailyPrayerTime.hijri_date.hy})
+          {$currentCityDailyPrayerTime.hijri_date.hy}
         </div>
       </div>
     {:else}
@@ -147,12 +146,9 @@
         </div>
         <div class="stat-title text-white font-roboto">
           <span>
-            (
-
             <span>{$adjustedHijriDate}</span>
             {HIJRI_MONTHS_LIST[+$currentCityDailyPrayerTime.hijri_date.hm - 1]}
             {$currentCityDailyPrayerTime.hijri_date.hy}
-            )
           </span>
         </div>
       </div>

@@ -3,6 +3,7 @@
 
   // import type { Actions } from "@sveltejs/kit";
   import Slider from "../../components/Slider/page.svelte";
+  import PetrolWidget from "../../components/petrolwidget/page.svelte";
   import PrayerWidget from "../../components/prayerwidget/page.svelte";
   // import AyatOfDayCard from "../../components/ayatOfDayCard/page.svelte";
   import ContentOfTheDayCard from "../../components/contentOfTheDayCard/page.svelte";
@@ -44,11 +45,16 @@
       <Dashboard />
       <br />
       <PrayerWidget />
-
+      <br />
+      <!-- <PetrolWidget /> -->
       <br />
       <Slider />
       <br />
-      <ContentOfTheDayCard contentProp={ayatProp} />
+
+      <a href="ayat">
+        <ContentOfTheDayCard contentProp={ayatProp} />
+      </a>
+
       <br />
       <ContentOfTheDayCard contentProp={hadithProp} />
       <br />
