@@ -18,7 +18,7 @@
 </script>
 
 <TopNavBar />
-<slot />
+
 <!-- <Navbar /> -->
 
 <br />

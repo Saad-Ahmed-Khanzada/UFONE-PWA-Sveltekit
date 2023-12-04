@@ -37,7 +37,6 @@
     {/if}
 {:else}
     <TopNavBar />
-    <!-- Loaded content -->
 
     <slot />
 {/if}

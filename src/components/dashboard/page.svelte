@@ -88,7 +88,7 @@
 
 <div class="flex justify-center px-5 pt-4 pb-50">
   <div
-    class="bg-[url(img/dashboard/dashboard-bg.png)] stats w-screen bg-no-repeat bg-cover dark:text-red-600"
+    class="bg-[url(img/dashboard/dashboard-bg.png)] stats w-screen bg-no-repeat bg-cover"
   >
     <!-- style="background:rgba(243, 128, 32, 1) ;" -->
     {#if $isUrdu}
@@ -97,7 +97,7 @@
         {#if showNextTime}
           <div>
             <h3>
-              <span class="text-xl font-semibold text-white dark:text-red-500">
+              <span class="text-xl font-semibold text-white">
                 <h1 class="font-urdu text-2xl">اگلی نماز</h1>
 
                 {nextPrayer.prayer}
