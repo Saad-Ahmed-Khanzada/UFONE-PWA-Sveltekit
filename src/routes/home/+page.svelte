@@ -36,7 +36,7 @@
 
 <Loading>
   <div>
-    <div class="bg-white text-center">
+    <div class="bg-white text-center font-semibold">
       <h1
         class="text-4xl pl-5 pt-2 font-bold text-secondary leading-loose font-urdu"
       >
