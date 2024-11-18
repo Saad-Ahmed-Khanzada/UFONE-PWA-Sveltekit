@@ -1,0 +1,1 @@
+A fast and responsive static website built with SvelteKit, TypeScript, and DaisyUI, offering a seamless user experience. The website supports multiple languages and utilizes efficient routing to provide a smooth navigation experience.
