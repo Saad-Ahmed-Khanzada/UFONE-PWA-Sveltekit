@@ -1,11 +1,4 @@
-{"routes":[
-    {
-        "src":"/",
-        "dest":"/"
-    },
-    {
-        "src":"/home",
-        "dest":"/"
-    }
-]
+
+{
+        "REWRITES":[{"SOURCE":"/(.*)","DESTINATION":"/"}]
 }
