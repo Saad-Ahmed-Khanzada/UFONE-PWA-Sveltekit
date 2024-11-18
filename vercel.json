@@ -1,4 +1,4 @@
-
 {
-        "REWRITES":[{"SOURCE":"/(.*)","DESTINATION":"/"}]
+    "buildCommand":"npm run build",
+    "devCommand" :"npm run dev"
 }
