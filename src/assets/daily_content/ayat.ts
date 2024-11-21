@@ -5,7 +5,7 @@ export const AYATLIST = JSON.parse(`[
   },
   {
     "Urdu": "آپ (صلیﷲ علیہ وسلم) کا رب پیدا کرتا ہے جو کچھ چاہتا ہے اور ( وہ خود ہی اپنے کام کے لیے جسے چاہتا ہے) منتخب کر لیتا ہے یہ انتخاب ان لوگوں کے کرنے کا کام نہیں ہے، ﷲ پاک ہے اور بہت بالاتر ہے اس شرک سے جو یہ لوگ کرتے ہیں",
-    "English": "Your Lord creates what He wills and chooses; not for them was the choice. Exalted is Allah and high above what they associate with Him. (Surah Al-Qasas, 28:68)"
+    "English": "Your Lord creates what He wills and chooses not for them was the choice. Exalted is Allah and high above what they associate with Him. (Surah Al-Qasas, 28:68)"
   },
   {
     "Urdu": "یہ وہ لوگ ہیں جنھیں ان کا اجر دگنا ملے گا اس ثابت قدمی کے بدلے میں جو انڹھوں نے دکھائی۔ وہ برائی کو بھلائی سے دفع کرتے ہیں اور جو رزق ہم نے انھیں دے رکھا ہے اس میں سے (ﷲ کی راہ میں) خرچ کرتے رہتے ہیں",
